@@ -1,0 +1,20 @@
+{
+  "project": "Ali Hossain \u2014 Digital Atelier",
+  "published_version": 6,
+  "source_commit": "6127aa0efff75c1fdf4b39f8f34b2a0d71bfd756",
+  "export_date": "2026-10-28",
+  "application_code": "unchanged from tracked source",
+  "export_changes": [
+    "Root README replaced with beginner guide",
+    "Original README preserved in docs",
+    "Documentation added",
+    "Empty optional environment example included"
+  ],
+  "excluded": [
+    "secrets",
+    "node_modules",
+    "build output",
+    "git history",
+    "local runtime state"
+  ]
+}
