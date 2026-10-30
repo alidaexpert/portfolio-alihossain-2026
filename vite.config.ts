@@ -14,6 +14,9 @@ const { d1, r2 } = hostingConfig;
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
 const managedLinux = readExecutionProfile() === "managed-linux";
+// Netlify builds run the app through Nitro's Netlify preset; the Cloudflare
+// plugin would replace the RSC entry with a Worker object Nitro can't call.
+const isNetlify = Boolean(process.env.NETLIFY);
 
 const localBindingConfig = {
   main: "./worker/index.ts",
@@ -57,7 +60,7 @@ export default defineConfig(async ({ command }) => {
       nitro(),
       sites({ mockAuth: !managedLinux }),
       connectorPreview(),
-      cloudflare({
+      !isNetlify && cloudflare({
         viteEnvironment: { name: "rsc", childEnvironments: ["ssr"] },
         inspectorPort: false,
         config: {
