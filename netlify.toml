@@ -2,3 +2,8 @@
 [build]
   command = "pnpm build"
   publish = "dist"
+
+# This is a Vinext (Vite) app deployed through Nitro's Netlify preset, not a
+# `next build` output, so the auto-installed Next.js runtime must not run.
+[build.environment]
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
